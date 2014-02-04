@@ -1,0 +1,22 @@
+# == Schema Information
+#
+# Table name: exercises
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  difficulty :integer
+#  score      :integer
+#  author_id  :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  exercise_hash: MyString
+  difficulty: 1
+
+two:
+  exercise_hash: MyString
+  difficulty: 1
