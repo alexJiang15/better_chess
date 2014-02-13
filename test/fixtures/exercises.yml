@@ -2,13 +2,14 @@
 #
 # Table name: exercises
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  difficulty :integer
-#  score      :integer
-#  author_id  :integer          not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id           :integer          not null, primary key
+#  name         :string(255)
+#  fen_position :string(255)
+#  difficulty   :integer
+#  score        :integer
+#  author_id    :integer          not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
