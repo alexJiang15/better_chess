@@ -1,0 +1,10 @@
+<h1><%= @user.first %> <%= @user.last %> (<%= @user.email %>)</h1>
+
+<div>
+	<h3>Rated Movies</h3>
+	<%= render @user.rated_movies %>
+</div>
+
+<div>
+	<%= link_to 'all movies', movies_path %>
+</div>
