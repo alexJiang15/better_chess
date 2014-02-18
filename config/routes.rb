@@ -1,11 +1,24 @@
 BetterChess::Application.routes.draw do
+  resources :users
+  resources :exercises do
+    resources :solutions, :only => [:new, :create, :destroy]
+  end
+  resources :solutions, :only => [:show, :index]
+  resources :comments
+  resources :sessions, only:[:new, :create, :destroy]
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'get'
+  #match '/confirm_email', to: 'users#confirm_email', via:'get'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
-
+  
+  root :to => 'users#index'
+  
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # This route can be invoked with purchase_url(:id => product.id)

@@ -1,0 +1,3 @@
+<div>
+  <%= link_to exercise.name, exercise_path(exercise) %> (difficulty: <%= exercise.difficulty %>) score: <%= exercise.score %> | <%= link_to 'edit', edit_exercise_path(exercise) %> | <%= link_to 'delete', exercise, :method=>:delete, :data=>{:confirm=>'are you sure?'} %>
+</div>

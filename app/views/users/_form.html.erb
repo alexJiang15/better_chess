@@ -1,12 +1,10 @@
 <%= form_for @user do |f| %>
   <%= render 'shared/error_messages', :object=>f.object %>
+  <%= f.hidden_field :karma %>
+  <%= f.hidden_field :last_logged_in %>
   <div>
-    <%= f.label :first %>
-    <%= f.text_field :first %>
-  </div>
-  <div>
-    <%= f.label :last %>
-    <%= f.text_field :last %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
   </div>
   <div>
     <%= f.label :email %>

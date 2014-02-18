@@ -1,0 +1,7 @@
+<% provide :title, @exercise.name %>
+
+<h2>Exercise: <%= @exercise.name %></h2>
+
+<%= @exercise.fen_position %>
+
+<%= link_to 'all exercises', exercises_path %>
