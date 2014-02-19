@@ -1,5 +1,6 @@
 <%= form_for @user do |f| %>
-  <%= render 'shared/error_messages', :object=>f.object %>
+  <%= render 'shared/error_messages' %>
+  <!-- <%= render 'shared/error_messages', :object=>f.object %> -->
   <%= f.hidden_field :karma %>
   <div>
     <%= f.label :first %>
@@ -16,7 +17,7 @@
     <%= f.password_field :password %>
   </div>
   <div>
-    <%= f.label :password_confirmation %>
+    <%= f.label :password_confirmation, "Confirm Password" %>
     <%= f.password_field :password_confirmation %>
   </div>
   <div>

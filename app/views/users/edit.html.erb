@@ -1,4 +1,4 @@
-<% provide :title, 'edit user' %>
-<h1>edit user</h1>
+<% provide :title, "edit #{@user.first} #{@user.last}" %>
+<h1>edit user: <%= @user.first %> <%= @user.last %></h1>
 
 <%= render 'form' %>
