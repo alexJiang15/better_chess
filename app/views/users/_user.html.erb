@@ -1,3 +1,3 @@
 <div>
-	<%= user.name %> (<%= user.email %>) karma: <%= user.karma %> | <%= link_to 'edit', edit_user_path(user) %> | <%= link_to 'show', user_path(user) %> | <%= link_to 'delete', user, :method=>:delete, :data=>{:confirm=>'are you sure?'} %>
+	<%= user.first %> <%= user.last %> (<%= user.email %>) karma: <%= user.karma %> | <%= link_to 'edit', edit_user_path(user) %> | <%= link_to 'show', user_path(user) %> | <%= link_to 'delete', user, :method=>:delete, :data=>{:confirm=>'are you sure?'} %>
 </div>

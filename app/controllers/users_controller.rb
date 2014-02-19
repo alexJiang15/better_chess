@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   end
   
   def index
-    @users = User.all.order(:name)    
+    @users = User.order(:first).all
   end
   
   def destroy
@@ -59,7 +59,9 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :karma, :last_logged_in)
+    params
+      .require(:user)
+      .permit(:first, :last, :email, :password, :password_confirmation, :karma)
   end
   
 end
