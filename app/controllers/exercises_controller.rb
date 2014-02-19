@@ -10,6 +10,7 @@ class ExercisesController < ApplicationController
       redirect_to exercises_path
     else
       render 'new'
+    end
   end
   
   def edit
