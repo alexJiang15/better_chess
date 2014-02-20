@@ -1,6 +1,6 @@
 <% provide :title, "#{@user.first} #{@user.last}" %>
 
-<aside class="span4">
+<aside>
   <section>
     <%= gravatar_for @user %>
     <h1><%= @user.first %> <%= @user.last %> (<%= @user.email %>)</h1>

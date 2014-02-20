@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :first, :last, :password, :password_confirmation, :karma
   
   before_save { |user| user.email = email.downcase }
+  before_save :create_remember_token
   
   has_many :solutions
   has_many :exercises, :through => :solutions
@@ -30,4 +31,10 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
   
   scope :enough_karma?, ->(k) { where('karma >= ?', k).uniq.order('karma ASC') }
+  
+  private
+
+    def create_remember_token
+      self.remember_token = SecureRandom.urlsafe_base64
+    end
 end

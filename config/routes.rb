@@ -6,9 +6,10 @@ BetterChess::Application.routes.draw do
   #end
   #resources :solutions, :only => [:show, :index]
   #resources :comments
-  #resources :sessions, only:[:new, :create, :destroy]
-  match '/signin',  to: 'sessions#new',         via: 'get'
-  #match '/signout', to: 'sessions#destroy',     via: 'get'
+  resources :sessions, only: [:new, :create, :destroy]
+  match '/signup', to: 'users#new'
+  match '/signin',  to: 'sessions#new'
+  match '/signout', to: 'sessions#destroy',     via: :delete
   #match '/confirm_email', to: 'users#confirm_email', via:'get'
   
   # The priority is based upon order of creation:
