@@ -1,6 +1,11 @@
 <% provide :title, 'index of users' %>
 <h1>all the users</h1>
-<%= render @users %>
+
+<ul>
+  <% @users.each do |user| %>
+    <li><%= render user %></li>
+  <% end %>
+</ul>
 
 <div>
 	<%= link_to 'new user', new_user_path, class:"btn btn-primary" %>
