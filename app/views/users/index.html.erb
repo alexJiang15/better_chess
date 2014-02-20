@@ -1,12 +1,13 @@
 <% provide :title, 'index of users' %>
 <h1>all the users</h1>
 
+<%= will_paginate %>
+
 <ul>
-  <% @users.each do |user| %>
-    <li><%= render user %></li>
-  <% end %>
+  <%= render @users %>
 </ul>
 
+<%= will_paginate %>
 <div>
 	<%= link_to 'new user', new_user_path, class:"btn btn-primary" %>
 </div>
