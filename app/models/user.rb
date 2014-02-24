@@ -10,6 +10,7 @@
 #  password_digest :string(255)
 #  first           :string(255)      default(""), not null
 #  last            :string(255)      default(""), not null
+#  admin           :boolean          default(FALSE)
 #
 
 class User < ActiveRecord::Base
@@ -17,7 +18,7 @@ class User < ActiveRecord::Base
   
   before_save { |user| user.email = email.downcase }
   
-  has_many :solutions
+  has_many :solutions, dependent: :destroy
   has_many :exercises, :through => :solutions
   has_many :comments
   

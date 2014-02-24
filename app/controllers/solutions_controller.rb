@@ -1,12 +1,12 @@
 class SolutionsController < ApplicationController
-  def new
-    @solution = Solution.new
-  end
+  before_filter :signed_in_user, only: [:create, :destroy]
+  before_filter :correct_user,   only: :destroy
   
   def create
-    @solution = Solution.new(solution_params)
+    @solution = current_user.solutions.build(params[:solution])
     if @solution.save
       flash[:success] = 'solution saved'
+      redirect_to @solution
     else
       render 'new'
     end
@@ -17,18 +17,19 @@ class SolutionsController < ApplicationController
   end
   
   def index
-    @solutions = Solution.all.order(:exercise_id)
+    @solutions = Solution.order(:exercise_id).all
   end
   
   def destroy
-    Solution.find(params[:id]).destroy
+    @solution.destroy
     flash[:success] = 'solution deleted'
     redirect_to solutions_path
   end
   
   private
   
-  def solution_params
-    params.require(:solution).permit(:move_string, :score, :solver_id, :exercise_id)
+  def correct_user
+    @solution = current_user.solutions.find_by_id(params[:id])
+    redirect_to root_path if @solution.nil?
   end
 end

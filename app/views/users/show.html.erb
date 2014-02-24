@@ -8,9 +8,22 @@
 </aside>
 
 <div>
-	<h3>solved exercises - TBD TBD TBD</h3>
+  <ul>
+    <% if @user.solutions.any? %>
+      <h3>Solutions (<%= @user.solutions.count %>)</h3>
+      <ol class="solutions">
+        <%= render @solutions %>
+      </ol>
+      <%= will_paginate @solutions %>
+    <% else %>
+      <h3>This user hasn't solved any exercises yet!</h3>
+    <% end %>
+  </ul>
 </div>
 
 <div>
-	<%= link_to 'all users', users_path %> | <%= link_to "edit #{@user.first} #{@user.last}", edit_user_path(@user) %> | <%= link_to "delete #{@user.first} #{@user.last}", @user, :method=>:delete, :data=>{:confirm=>'are you sure?'} %>
+	<%= link_to 'all users', users_path %> 
+  <% if current_user.admin? or current_user?(@user) %>
+    | <%= link_to "edit #{@user.first} #{@user.last}", edit_user_path(@user) %> | <%= link_to "delete #{@user.first} #{@user.last}", @user, :method=>:delete, :data=>{:confirm=>'are you sure?'} %> 
+  <% end %>
 </div>

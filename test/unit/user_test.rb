@@ -10,6 +10,7 @@
 #  password_digest :string(255)
 #  first           :string(255)      default(""), not null
 #  last            :string(255)      default(""), not null
+#  admin           :boolean          default(FALSE)
 #
 
 require 'test_helper'

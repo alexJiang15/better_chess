@@ -1,13 +1,16 @@
 class ExercisesController < ApplicationController
+  before_filter :signed_in_user
+  
   def new
     @exercise = Exercise.new
+    @exercise.author_id = current_user.id
   end
   
   def create
-    @exercise = Exercise.new(exercise_params)
+    @exercise = Exercise.new(params[:exercise])
     if @exercise.save
       flash[:success] = "exercise created"
-      redirect_to exercises_path
+      redirect_to @exercise
     else
       render 'new'
     end
@@ -29,6 +32,7 @@ class ExercisesController < ApplicationController
   
   def solve
     @exercise = Exercise.find(params[:id])
+    @solution = current_user.solutions.build if signed_in?
   end
   
   def show
@@ -36,7 +40,7 @@ class ExercisesController < ApplicationController
   end
   
   def index
-    @exercises = Exercise.all.order(:name)
+    @exercises = Exercise.order(:name).all
   end
   
   def destroy
@@ -47,8 +51,13 @@ class ExercisesController < ApplicationController
   
   private
   
-  def exercise_params
-    params.require(:exercise).permit(:name, :fen_position, :difficulty, :score, :last_logged_in)
+  private
+  
+  def check_signed_in_user
+    unless signed_in?
+      flash[:warning] = 'please sign in first'
+      redirect_to signin_url
+    end
   end
   
 end

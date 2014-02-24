@@ -1,10 +1,10 @@
 BetterChess::Application.routes.draw do
   resources :users
   match '/signup', to: 'users#new', via: 'get'
-  #resources :exercises do
-  #  resources :solutions, :only => [:new, :create, :destroy]
-  #end
-  #resources :solutions, :only => [:show, :index]
+  resources :exercises do
+    resources :solutions, :only => [:new, :create, :destroy]
+  end
+  resources :solutions, :only => [:show, :index]
   #resources :comments
   resources :sessions, only: [:new, :create, :destroy]
   match '/signup', to: 'users#new'

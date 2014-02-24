@@ -37,6 +37,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @solutions = @user.solutions.paginate(page: params[:page])
   end
   
   def index
@@ -47,6 +48,10 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     flash[:success] = 'user deleted'
     redirect_to users_url
+  end
+  
+  def feed # preliminary feed of this user's solutions
+    Solution.where("user_id = ?", id)
   end
   
   # def confirm_email
@@ -69,13 +74,6 @@ class UsersController < ApplicationController
     params
       .require(:user)
       .permit(:first, :last, :email, :password, :password_confirmation, :karma)
-  end
-  
-  def signed_in_user
-    unless signed_in?
-      store_location
-      redirect_to signin_url, notice: "Please sign in."
-    end
   end
   
   def correct_user

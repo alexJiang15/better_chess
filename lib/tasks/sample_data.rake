@@ -23,5 +23,13 @@ namespace :db do
                    password: password,
                    password_confirmation: password)
     end
+    
+    # exercise = admin.exercises.create!(name: "Sample Exercise", author_id: admin.id)
+    
+    # users = User.all(limit: 6)
+    # 5.times do 
+    #   move_string = Faker::Lorem.sentence(4)
+    #   users.each { |user| user.solutions.create!(move_string: move_string, user_id: user.id, exercise_id: exercise.id ) }
+    # end
   end
 end

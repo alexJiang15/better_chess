@@ -13,10 +13,12 @@
 #
 
 class Exercise < ActiveRecord::Base
-  attr_accessible :name, :fen_position, :difficulty, :score
+  attr_accessible :name, :fen_position#, :score, :author_id  **** DANGEROUS!!!!
   
   has_many :solutions
-  has_many :users, :as => :solvers, :class_name => 'User', :foreign_key => 'solver_id', :through => :solutions #necessary??
+  has_many :solvers, :source => :user, :foreign_key => 'user_id', :through => :solutions
   belongs_to :author, :class_name => 'User', :foreign_key => 'author_id'
   has_many :comments, as: :commentable
+  
+  validates :name, presence: true
 end

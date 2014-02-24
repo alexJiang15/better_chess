@@ -5,16 +5,21 @@
 #  id          :integer          not null, primary key
 #  move_string :string(255)
 #  score       :integer
-#  solver_id   :integer          not null
+#  user_id     :integer          not null
 #  exercise_id :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
 
 class Solution < ActiveRecord::Base
-  attr_accessible :move_string, :score
+  attr_accessible :move_string, :score#, :user_id, :exercise_id **** DANGEROUS!!!!
   
-  belongs_to :solver, :class_name => 'User', :foreign_key => 'solver_id'
+  belongs_to :user
   belongs_to :exercise
   has_many :comments, as: :commentable
+  
+  validates :user_id, presence: true
+  validates :exercise_id, presence: true
+  
+  default_scope order: 'solutions.created_at DESC'
 end
