@@ -11,9 +11,9 @@
   <ul>
     <% if @user.solutions.any? %>
       <h3>Solutions (<%= @user.solutions.count %>)</h3>
-      <ol class="solutions">
+      <ul class="solutions">
         <%= render @solutions %>
-      </ol>
+      </ul>
       <%= will_paginate @solutions %>
     <% else %>
       <h3>This user hasn't solved any exercises yet!</h3>

@@ -1,11 +1,11 @@
 <li>
   <span class="content"><%= solution.move_string %></span>
   <span class="timestamp">
-    Solved <%= time_ago_in_words(solution.created_at) %> ago.
+    <%= time_ago_in_words(solution.created_at) %> ago
   </span>
   <% if current_user?(solution.user) %>
     <%= link_to "delete", solution, method: :delete,
-                                    data: { confirm: "You sure?" },
+                                    data: { confirm: "you sure?" },
                                     title: solution.content %>
   <% end %>
 </li>

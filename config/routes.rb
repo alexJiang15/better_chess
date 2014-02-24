@@ -1,10 +1,11 @@
 BetterChess::Application.routes.draw do
+  get "static_pages/home"
   resources :users
   match '/signup', to: 'users#new', via: 'get'
   resources :exercises do
     resources :solutions, :only => [:new, :create, :destroy]
   end
-  resources :solutions, :only => [:show, :index]
+  resources :solutions, :only => [:create, :show, :index, :destroy]
   #resources :comments
   resources :sessions, only: [:new, :create, :destroy]
   match '/signup', to: 'users#new'
@@ -19,7 +20,7 @@ BetterChess::Application.routes.draw do
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
   
-  root to: 'users#index'
+  root to: 'static_pages#home'
   
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase

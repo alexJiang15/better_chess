@@ -8,6 +8,7 @@ class SolutionsController < ApplicationController
       flash[:success] = 'solution saved'
       redirect_to @solution
     else
+      @feed_items = []
       render 'new'
     end
   end
