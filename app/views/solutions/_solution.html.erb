@@ -1,11 +1,11 @@
-<li>
+<li class="solution">
   <span class="content"><%= solution.move_string %></span>
   <span class="timestamp">
-    <%= time_ago_in_words(solution.created_at) %> ago
+    by <%= link_to "#{solution.user.first} #{solution.user.last}", solution.user %> - <%= time_ago_in_words(solution.created_at) %> ago
   </span>
   <% if current_user?(solution.user) %>
     <%= link_to "delete", solution, method: :delete,
                                     data: { confirm: "you sure?" },
-                                    title: solution.content %>
+                                    title: solution.move_string %>
   <% end %>
 </li>

@@ -37,8 +37,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @solutions = @user.solutions.paginate(page: params[:page])
-    @feed_items = current_user.feed.paginate(page: params[:page])
+    @solutions = @user.solutions.paginate(page: params[:page], :per_page => 15)
+    @feed_items = feed(@user).paginate(page: params[:page])
   end
   
   def index
@@ -51,8 +51,8 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
   
-  def feed # preliminary feed of this user's solutions
-    Solution.where("user_id = ?", id)
+  def feed(user) # preliminary feed of this user's solutions
+    Solution.where("user_id = ?", user.id)
   end
   
   # def confirm_email

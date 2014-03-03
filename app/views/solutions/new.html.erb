@@ -1,8 +1,11 @@
-<h3>new solution</h3>
+<h3>new solution for <%= @exercise.name %></h3>
+
+<%= render @exercise %>
 
 <%= form_for @solution do |form| %>
   <%= render 'shared/error_messages', :object=>form.object %>
-  <%= form.hidden_field :exercise_id %>
+  <%= form.hidden_field :exercise_id, :value => params[:exercise_id] %>
+  <%= form.hidden_field :user_id, :value => params[:user_id] %>
   <div>
     <%= form.label :move_string %>
     <%= form.text_field :move_string %>

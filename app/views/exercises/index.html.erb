@@ -1,7 +1,13 @@
 <% provide :title, 'all exercises' %>
 
-<h1>All Exercises</h1>
+<h1>all exercises</h1>
 
-<%= render @exercises %>
+<%= will_paginate %>
+
+<ul>
+  <%= render @exercises %>
+</ul>
+
+<%= will_paginate %>
 
 <%= link_to 'new exercise', new_exercise_path %>

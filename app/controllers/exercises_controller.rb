@@ -2,12 +2,12 @@ class ExercisesController < ApplicationController
   before_filter :signed_in_user
   
   def new
-    @exercise = Exercise.new
-    @exercise.author_id = current_user.id
+    @exercise = Exercise.new()
   end
   
   def create
     @exercise = Exercise.new(params[:exercise])
+    @exercise.author = current_user
     if @exercise.save
       flash[:success] = "exercise created"
       redirect_to @exercise
@@ -22,7 +22,7 @@ class ExercisesController < ApplicationController
   
   def update
     @exercise = Exercise.find(params[:id])
-    if @exercise.update_attributes(exercise_params)
+    if @exercise.update_attributes(params[:exercise])
       flash[:success] = 'exercise updated'
       redirect_to exercises_path
     else
@@ -30,17 +30,13 @@ class ExercisesController < ApplicationController
     end
   end
   
-  def solve
-    @exercise = Exercise.find(params[:id])
-    @solution = current_user.solutions.build if signed_in?
-  end
-  
   def show
     @exercise = Exercise.find(params[:id])
+    @solutions = @exercise.solutions
   end
   
   def index
-    @exercises = Exercise.order(:name).all
+    @exercises = Exercise.paginate(page: params[:page])
   end
   
   def destroy

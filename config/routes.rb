@@ -3,9 +3,9 @@ BetterChess::Application.routes.draw do
   resources :users
   match '/signup', to: 'users#new', via: 'get'
   resources :exercises do
-    resources :solutions, :only => [:new, :create, :destroy]
+    resources :solutions
   end
-  resources :solutions, :only => [:create, :show, :index, :destroy]
+  resources :solutions
   #resources :comments
   resources :sessions, only: [:new, :create, :destroy]
   match '/signup', to: 'users#new'
