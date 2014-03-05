@@ -4,7 +4,6 @@ class SolutionsController < ApplicationController
   
   def new 
     @exercise = Exercise.find(params[:exercise_id])
-    @user = current_user
     @solution = Solution.new
   end
   
@@ -22,6 +21,7 @@ class SolutionsController < ApplicationController
   
   def show
     @solution = Solution.find(params[:id])
+    @exercise = @solution.exercise
   end
   
   def index

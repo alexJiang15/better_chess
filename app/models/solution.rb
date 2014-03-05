@@ -12,7 +12,7 @@
 #
 
 class Solution < ActiveRecord::Base
-  attr_accessible :move_string, :score#, :user_id, :exercise_id **** DANGEROUS!!!!
+  attr_accessible :move_string, :score, :user_id, :exercise_id # **** DANGEROUS!!!!
   
   belongs_to :user
   belongs_to :exercise

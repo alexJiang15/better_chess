@@ -1,0 +1,17 @@
+<% provide :title, "solution for #{@exercise.name}" %>
+
+<h2>Solution to exercise <%= @exercise.name %></h2> 
+<p>by: <%= render @solution.user %></p>
+
+<div>
+  <p>FEN position string:</p>
+  <%= @exercise.fen_position %>
+</div>
+
+<h3>Solution</h3>
+<ul>
+  <%= @solution.move_string %>
+</ul>
+
+<p><%= link_to 'solve exercise', new_exercise_solution_path(@exercise), :class=>'btn btn-large btn-primary' %></p>
+<p><%= link_to 'all solutions', solutions_path %></p>

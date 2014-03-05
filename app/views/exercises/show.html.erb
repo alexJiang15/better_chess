@@ -1,6 +1,7 @@
 <% provide :title, @exercise.name %>
 
-<h2>Exercise: <%= @exercise.name %></h2>
+<h2>Exercise: <%= @exercise.name %></h2> 
+<p>by: <%= render @exercise.author %></p>
 
 <div>
   <p>FEN position string:</p>

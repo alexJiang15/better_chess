@@ -2,7 +2,7 @@ class ExercisesController < ApplicationController
   before_filter :signed_in_user
   
   def new
-    @exercise = Exercise.new()
+    @exercise = Exercise.new
   end
   
   def create
