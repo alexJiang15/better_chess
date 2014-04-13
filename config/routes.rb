@@ -7,8 +7,8 @@ BetterChess::Application.routes.draw do
   #resources :solutions, :only => [:show, :index]
   #resources :comments
   resources :sessions, only: [:new, :create, :destroy]
-  match '/signup', to: 'users#new'
-  match '/signin',  to: 'sessions#new'
+  match '/signup', to: 'users#new', via: [:get]
+  match '/signin',  to: 'sessions#new', via: [:get]
   match '/signout', to: 'sessions#destroy',     via: :delete
   #match '/confirm_email', to: 'users#confirm_email', via:'get'
   
