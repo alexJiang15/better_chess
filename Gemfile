@@ -6,13 +6,10 @@ ruby '2.0.0'
 gem 'rails', '4.0.4'
 gem 'protected_attributes'
 
-
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-group :development do
-  gem 'mysql'
-end
+gem 'mysql'
 
 # Gems used only for assets and not required
 # in production environments by default.
